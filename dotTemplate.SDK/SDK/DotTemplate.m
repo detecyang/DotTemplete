@@ -151,32 +151,32 @@
         
         //读取所有TextBox
         NSArray *arrayNode = [templateNode elementsForName:NODE_TEXTBOX];
-        NSMutableArray *arrayTxt = [[NSArray alloc] initWithCapacity:[arrayNode count]];
+        NSMutableArray *arrayTxt = [[NSMutableArray alloc] initWithCapacity:[arrayNode count]];
         for (GDataXMLElement *elem in arrayNode)
         {
             TextBox *txtBox = [[TextBox alloc] init];
             //获取id
-            NSString *strTxtID = [[templateNode attributeForName:ATTRIBUTE_NAME] stringValue];
+            NSString *strTxtID = [[elem attributeForName:ATTRIBUTE_ID] stringValue];
             txtBox.ID = [strTxtID intValue];
             //获取name
-            NSString *strTxtName = [[templateNode attributeForName:ATTRIBUTE_NAME] stringValue];
+            NSString *strTxtName = [[elem attributeForName:ATTRIBUTE_NAME] stringValue];
             NSString *txtName = [[NSString alloc] initWithString:strTxtName];
             txtBox.name = txtName;
             [txtName release];
             //获取x
-            NSString *strTxtX = [[templateNode attributeForName:ATTRIBUTE_NAME] stringValue];
+            NSString *strTxtX = [[elem attributeForName:ATTRIBUTE_X] stringValue];
             txtBox.x = [strTxtX intValue];
             //获取y
-            NSString *strTxtY = [[templateNode attributeForName:ATTRIBUTE_NAME] stringValue];
+            NSString *strTxtY = [[elem attributeForName:ATTRIBUTE_Y] stringValue];
             txtBox.y = [strTxtY intValue];
             //获取w
-            NSString *strTxtW = [[templateNode attributeForName:ATTRIBUTE_NAME] stringValue];
+            NSString *strTxtW = [[elem attributeForName:ATTRIBUTE_W] stringValue];
             txtBox.width = [strTxtW intValue];
             //获取h
-            NSString *strTxtH = [[templateNode attributeForName:ATTRIBUTE_NAME] stringValue];
+            NSString *strTxtH = [[elem attributeForName:ATTRIBUTE_H] stringValue];
             txtBox.height = [strTxtH intValue];
             //获取align
-            NSString *strTxtA = [[templateNode attributeForName:ATTRIBUTE_NAME] stringValue];
+            NSString *strTxtA = [[elem attributeForName:ATTRIBUTE_ALIGN] stringValue];
             if ([strTxtA isEqualToString:ATTRIBUTE_VALUE_L])
             {
                 txtBox.align = TextAlignmetLeft;

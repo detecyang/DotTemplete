@@ -9,7 +9,7 @@
 #import "mainView.h"
 #import "DotTemplate.h"
 
-
+#define XML_STRING @"<?xml version=\"1.0\" encoding=\"UTF-8\"?><!--本文档由dotTemplate程序自动生成，请不要手动修改！--><!--This document was created by dotTemplate, do not modify it manual, please.--><ROOT>  <TEMPLATE NAME=\"新建模板\" W=\"30\" H=\"20\">    <TEXTBOX ID=\"0\" NAME=\"Txt1\" X=\"1\" Y=\"1\" W=\"28\" H=\"2\" ALIGN=\"L\" />    <TEXTBOX ID=\"1\" NAME=\"Txt2\" X=\"1\" Y=\"4\" W=\"28\" H=\"1\" ALIGN=\"L\" />    <TEXTBOX ID=\"2\" NAME=\"新建文本框2\" X=\"1\" Y=\"6\" W=\"7\" H=\"3\" ALIGN=\"L\" />    <TEXTBOX ID=\"3\" NAME=\"新建文本框3\" X=\"9\" Y=\"6\" W=\"7\" H=\"3\" ALIGN=\"L\" />    <TEXTBOX ID=\"4\" NAME=\"新建文本框4\" X=\"17\" Y=\"6\" W=\"6\" H=\"3\" ALIGN=\"L\" />    <TEXTBOX ID=\"5\" NAME=\"新建文本框5\" X=\"24\" Y=\"6\" W=\"5\" H=\"3\" ALIGN=\"L\" />    <TEXTBOX ID=\"6\" NAME=\"新建文本框6\" X=\"1\" Y=\"10\" W=\"28\" H=\"2\" ALIGN=\"L\" />  </TEMPLATE></ROOT>"
 
 
 @implementation mainView
@@ -25,34 +25,16 @@
 }
 */
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    DotTemplate *temp = [[DotTemplate alloc] init];
-    temp.width=10;
-    temp.height=3;
-    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:2];
-    TextBox *txt1 = [[TextBox alloc] init];
-    txt1.x=0;
-    txt1.y=0;
-    txt1.width=4;
-    txt1.height=2;
-    txt1.value = @"123四";
-    [array addObject:txt1];
-    [txt1 release];
-    TextBox *txt2 = [[TextBox alloc] init];
-    txt2.x=5;
-    txt2.y=0;
-    txt2.width=5;
-    txt2.height=3;
-    txt2.value = @"1四五六七890";
-    [array addObject:txt2];
-    [txt2 release];
-    temp.textBoxArray = array;
-    [array release];
-    NSMutableArray *out = [temp ParseStringsWithTextBox];
+    DotTemplate *temp = [[DotTemplate alloc] initWithXmlString:XML_STRING];
+    for (TextBox *txt in temp.textBoxArray)
+    {
+        txt.value = @"Test测试Test测试";
+    }
     
+    NSMutableArray *out = [temp ParseStringsWithTextBox];
     
     NSMutableString *string = [NSMutableString stringWithString:@""];
     for (NSString *str in out)
@@ -65,27 +47,14 @@
 }
 
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
-
 
 - (void)dealloc {
     [lab release];
