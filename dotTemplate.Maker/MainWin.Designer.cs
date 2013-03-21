@@ -1,4 +1,4 @@
-﻿namespace dotTemplate
+﻿namespace dotTemplate.Maker
 {
     partial class MainWin
     {

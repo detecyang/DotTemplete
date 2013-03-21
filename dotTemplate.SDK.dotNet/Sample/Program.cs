@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace dotTemplate.Maker
+namespace dotTemplate.SDK.Sample
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace dotTemplate.Maker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWin());
+            Application.Run(new sample());
         }
     }
 }

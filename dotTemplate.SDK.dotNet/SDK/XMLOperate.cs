@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
 
-namespace dotTemplate.Maker
+namespace dotTemplate.SDK.dotNet
 {
     class XMLOperate
     {

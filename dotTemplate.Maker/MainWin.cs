@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace dotTemplate
+namespace dotTemplate.Maker
 {
     public partial class MainWin : Form
     {

@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace dotTemplate
+namespace dotTemplate.Maker
 {
     /// <summary>
     /// 一个字符块类，用于显示一个矩形ASCII字块

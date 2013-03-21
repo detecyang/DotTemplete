@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace dotTemplate
+namespace dotTemplate.Maker
 {
     /// <summary>
     /// 一个文本框类，用于显示模板中绘制出的一个文本框
