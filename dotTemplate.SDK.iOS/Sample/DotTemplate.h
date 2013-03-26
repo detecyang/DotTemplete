@@ -11,7 +11,7 @@
 
 typedef enum
 {
-    TextAlignmetLeft = 0,
+    TextAlignmentLeft = 0,
     TextAlignmentCenter,
     TextAlignmentRight
 }TextAlignment;

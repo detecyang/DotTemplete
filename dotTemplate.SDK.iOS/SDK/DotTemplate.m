@@ -179,7 +179,7 @@
             NSString *strTxtA = [[elem attributeForName:ATTRIBUTE_ALIGN] stringValue];
             if ([strTxtA isEqualToString:ATTRIBUTE_VALUE_L])
             {
-                txtBox.align = TextAlignmetLeft;
+                txtBox.align = TextAlignmentLeft;
             }
             else if ([strTxtA isEqualToString:ATTRIBUTE_VALUE_C])
             {
@@ -238,7 +238,45 @@
         //遍历所有的文本框，将其填充到symbolBlocks中
         for (int q=txt.y; q<=y2; q++)
         {
-            for (int p=txt.x; p<=x2; p++)
+            int p = txt.x;
+            switch (txt.align)
+            {
+                case TextAlignmentLeft:
+                    p = txt.x;
+                    break;
+                case TextAlignmentRight:
+                {
+                    int subStrLen = [DotTemplate getCountOfString:[txt.value substringFromIndex:posValue]];
+                    if (valueLen>=posValue+1 && subStrLen<txt.width)
+                    {
+                        p = txt.x + (txt.width-subStrLen);
+                        if (p == txt.x+txt.width-1 && IS_CH_SYMBOL([txt.value characterAtIndex:posValue]))
+                        {
+                            p--;  //如果一行的最后一个字块存入中文，则需要从前一个位置开始存，因为汉字占两个位置
+                            if (p<0) { continue; };
+                        }
+                    }
+                }
+                    break;
+                case TextAlignmentCenter:
+                {
+                    int subStrLen = [DotTemplate getCountOfString:[txt.value substringFromIndex:posValue]];
+                    if (valueLen>=posValue+1 && subStrLen<txt.width)
+                    {
+                        p = txt.x + (txt.width-subStrLen)/2;
+                        if (p == txt.x+txt.width-1 && IS_CH_SYMBOL([txt.value characterAtIndex:posValue]))
+                        {
+                            p--;  //如果一行的最后一个字块存入中文，则需要从前一个位置开始存，因为汉字占两个位置
+                            if (p<0) { continue; };
+                        }
+                    }
+                }
+                    break;
+                default:
+                    break;
+            }
+            
+            for (; p<=x2; p++)
             {
                 //如果value遍历到当前位置的字符串长度大于文本框的宽度，说明文本框存满了，退出循环。
                 if (posValue+1 > valueLen) { break; }
@@ -260,6 +298,7 @@
                 }
                 posValue++;
             }
+            
         }
         
     }
@@ -308,7 +347,7 @@
     for (int i=0,cnt=[string length];i<cnt;i++)
     {
         unichar ch = [string characterAtIndex:i];
-        if (ch > 0x4e00 && ch < 0x9fff)
+        if ((int)ch > 0x4e00 && ch < 0x9fff)
         {
             num+=2;
         }

@@ -101,16 +101,16 @@ namespace dotTemplate.SDK.dotNet
                         TextBox textBox = new TextBox();
                         textBox.ID = Convert.ToInt32(text.GetAttribute("ID"));
                         textBox.Name = text.GetAttribute("NAME");
-                        string strAlign = text.GetAttribute("ALIGH");
-                        if (strAlign == HorizontalAlignment.Left.ToString())
+                        string strAlign = text.GetAttribute("ALIGN");
+                        if (strAlign == "L")
                         {
                              textBox.Align = HorizontalAlignment.Left;
                         }
-                        else if (strAlign == HorizontalAlignment.Right.ToString())
+                        else if (strAlign == "R")
                         {
                              textBox.Align = HorizontalAlignment.Right;
                         }
-                        else if (strAlign == HorizontalAlignment.Center.ToString())
+                        else if (strAlign == "C")
                         {
                              textBox.Align = HorizontalAlignment.Center;
                         }
@@ -160,7 +160,45 @@ namespace dotTemplate.SDK.dotNet
                 //遍历所有的文本框，将其填充到symbolBlocks中
                 for (int q = txt.Rect.Y; q <= y2; q++)
                 {
-                    for (int p = txt.Rect.X; p <= x2; p++)
+                    int p = txt.Rect.X;
+                    switch (txt.Align)
+                    {
+                        case HorizontalAlignment.Left:
+                            p = txt.Rect.X;
+                            break;
+                        case HorizontalAlignment.Right:
+                        {
+                            int subStrLen = dotTemplateParser.getCountOfString(txt.value.Substring(posValue));
+                            if (valueLen>=posValue+1 && subStrLen<txt.Rect.Width)
+                            {
+                                p = txt.Rect.X + (txt.Rect.Width-subStrLen);
+                                if (p == txt.Rect.X+txt.Rect.Width-1 && dotTemplateParser.isChSymbol(txt.value[posValue]))
+                                {
+                                    p--;  //如果一行的最后一个字块存入中文，则需要从前一个位置开始存，因为汉字占两个位置
+                                    if (p<0) { continue; };
+                                }
+                            }
+                        }
+                            break;
+                        case HorizontalAlignment.Center:
+                        {
+                            int subStrLen = dotTemplateParser.getCountOfString(txt.value.Substring(posValue));
+                            if (valueLen >= posValue + 1 && subStrLen < txt.Rect.Width)
+                            {
+                                p = txt.Rect.X + (txt.Rect.Width - subStrLen)/2;
+                                if (p == txt.Rect.X + txt.Rect.Width - 1 && dotTemplateParser.isChSymbol(txt.value[posValue]))
+                                {
+                                    p--;  //如果一行的最后一个字块存入中文，则需要从前一个位置开始存，因为汉字占两个位置
+                                    if (p < 0) { continue; };
+                                }
+                            }
+                        }
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                    for (; p <= x2; p++)
                     {
                         //如果value遍历到当前位置的字符串长度大于文本框的宽度，说明文本框存满了，退出循环。
                         if (posValue+1 > valueLen) { break; }

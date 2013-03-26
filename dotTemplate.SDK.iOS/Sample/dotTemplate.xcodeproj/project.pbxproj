@@ -24,7 +24,7 @@
 		1D3623250D0F684500981E51 /* dotTemplateAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dotTemplateAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* dotTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dotTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		27B84D1816EB7033007325C6 /* DotTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotTemplate.h; sourceTree = SOURCE_ROOT; };
+		27A4623B17014A1000B02C7F /* DotTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotTemplate.h; sourceTree = SOURCE_ROOT; };
 		27B84D1916EB709A007325C6 /* mainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainView.h; sourceTree = "<group>"; };
 		27B84D1A16EB709A007325C6 /* mainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainView.m; sourceTree = "<group>"; };
 		27B84D1B16EB709A007325C6 /* mainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = mainView.xib; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				27B84D1816EB7033007325C6 /* DotTemplate.h */,
+				27A4623B17014A1000B02C7F /* DotTemplate.h */,
 				1D3623240D0F684500981E51 /* dotTemplateAppDelegate.h */,
 				1D3623250D0F684500981E51 /* dotTemplateAppDelegate.m */,
 				27B84D1916EB709A007325C6 /* mainView.h */,

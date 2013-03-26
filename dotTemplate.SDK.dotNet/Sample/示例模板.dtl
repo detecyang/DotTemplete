@@ -7,6 +7,6 @@
     <TEXTBOX ID="16" NAME="txt1" X="12" Y="1" W="7" H="3" ALIGN="L" />
     <TEXTBOX ID="17" NAME="txt2" X="1" Y="5" W="18" H="2" ALIGN="L" />
     <TEXTBOX ID="18" NAME="txt3" X="1" Y="8" W="18" H="1" ALIGN="L" />
-    <TEXTBOX ID="19" NAME="txt4" X="1" Y="10" W="18" H="6" ALIGN="L" />
+    <TEXTBOX ID="19" NAME="txt4" X="1" Y="10" W="18" H="6" ALIGN="R" />
   </TEMPLATE>
 </ROOT>
